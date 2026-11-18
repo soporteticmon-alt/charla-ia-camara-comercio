@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#12203A">
+<title>Caja de trucos · La IA para aprender de verdad</title>
+<meta name="description" content="Datos sorprendentes, juegos y 22 prompts listos para usar la inteligencia artificial como herramienta de aprendizaje.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#12203A;--card:#1B2B4A;--card2:#223657;--line:#2E4266;--text:#F6F1E7;--muted:#B9C2D6;--y:#F5B700;--ink:#12203A;--g:#1FA38A;--r:#F26B5B;--paper:#F6F1E7}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font:16px/1.55 Inter,system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3,.big{font-family:"Plus Jakarta Sans",Inter,sans-serif;line-height:1.08;letter-spacing:-.025em}
+a{color:inherit}
+.wrap{max-width:920px;margin:0 auto;padding:0 20px}
+section{padding:72px 0 8px}
+.eyebrow{font:700 12px/1 Inter;letter-spacing:.18em;text-transform:uppercase;color:var(--y);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.eyebrow:before{content:"";width:28px;height:3px;background:var(--y);border-radius:2px}
+h2{font-size:clamp(30px,6.4vw,50px);font-weight:800;margin-bottom:14px}
+.lead{color:var(--muted);max-width:58ch;margin-bottom:28px;font-size:17px}
+.y{color:var(--y)}
+button{font:inherit;color:inherit;cursor:pointer}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--y);color:var(--ink);font:700 15px Inter;padding:14px 22px;border-radius:14px;text-decoration:none;border:0}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+:focus-visible{outline:3px solid var(--y);outline-offset:2px}
+/* progress + nav */
+#bar{position:fixed;top:0;left:0;height:3px;background:var(--y);width:0;z-index:40}
+.nav{position:sticky;top:0;z-index:30;background:rgba(18,32,58,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;gap:4px;overflow-x:auto;padding:10px 20px;scrollbar-width:none}
+.nav a{white-space:nowrap;text-decoration:none;font:600 13px Inter;color:var(--muted);padding:8px 13px;border-radius:99px}
+.nav a:hover{color:var(--text);background:var(--card)}
+/* hero */
+.hero{position:relative;padding:56px 0 40px;overflow:hidden}
+.hero:before{content:"";position:absolute;right:-160px;top:-140px;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle,rgba(245,183,0,.32),transparent 66%)}
+.hero:after{content:"";position:absolute;left:-180px;bottom:-200px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(31,163,138,.14),transparent 66%)}
+.hero .wrap{position:relative;z-index:1}
+.tag{display:inline-block;background:var(--y);color:var(--ink);font:800 11px/1 Inter;letter-spacing:.1em;text-transform:uppercase;padding:9px 13px;border-radius:99px;margin-bottom:24px}
+.hero h1{font-size:clamp(44px,11.5vw,92px);font-weight:800;margin-bottom:20px}
+.hero h1 em{font-style:normal;color:var(--y)}
+.hero p.sub{color:var(--muted);font-size:19px;max-width:48ch;margin-bottom:28px}
+.by{display:flex;gap:12px;align-items:center;color:var(--muted);font-size:14px;margin-top:30px}
+.by b{color:var(--text)}
+.av{width:44px;height:44px;border-radius:50%;background:var(--y);color:var(--ink);display:grid;place-items:center;font:800 18px "Plus Jakarta Sans"}
+/* ticker */
+.ticker{border-block:1px solid var(--line);background:var(--card);overflow:hidden;white-space:nowrap}
+.ticker div{display:inline-block;padding:14px 0;animation:tk 48s linear infinite;font:600 14px Inter;color:var(--muted)}
+.ticker b{color:var(--y);margin:0 8px 0 28px;font-weight:800}
+@keyframes tk{to{transform:translateX(-50%)}}
+/* big stats */
+.stat{position:relative;border:1px solid var(--line);border-radius:26px;padding:28px 24px;background:var(--card);margin-bottom:16px;overflow:hidden}
+.stat.hot{background:var(--y);color:var(--ink);border-color:var(--y)}
+.stat .big{font-size:clamp(72px,22vw,150px);font-weight:800;line-height:.9;color:var(--y);display:block;margin-bottom:10px}
+.stat.hot .big{color:var(--ink)}
+.stat h3{font-size:21px;font-weight:800;margin-bottom:8px}
+.stat p{color:var(--muted);max-width:56ch}
+.stat.hot p{color:#22304F}
+.stat small{display:block;margin-top:14px;font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px}
+.stat.hot small{color:#22304F;border-color:rgba(0,0,0,.2)}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.pair div{background:var(--bg);border-radius:16px;padding:14px;border:1px solid var(--line)}
+.stat.hot .pair div{background:rgba(0,0,0,.08);border-color:rgba(0,0,0,.18)}
+.pair b{font:800 36px "Plus Jakarta Sans";display:block;line-height:1}
+.pair .neg{color:var(--r)} .pair .pos{color:var(--g)}
+.stat.hot .pair .neg{color:#7A0A1E}.stat.hot .pair .pos{color:#0B4F43}
+.pair span{font-size:13px;color:var(--muted)}
+.stat.hot .pair span{color:#22304F}
+.grid{display:grid;gap:12px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.mini{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px}
+.mini b{font:800 44px "Plus Jakarta Sans";color:var(--y);display:block;line-height:1}
+.mini p{color:var(--text);margin-top:8px;font-size:15px}
+.mini small{display:block;margin-top:10px;font-size:12px;color:var(--muted)}
+/* game */
+.game{background:var(--paper);color:var(--ink);border-radius:28px;padding:26px 22px}
+.game .eyebrow{color:#7A5F00}.game .eyebrow:before{background:#7A5F00}
+.game h3{font-size:clamp(22px,5vw,30px);font-weight:800;margin:8px 0 18px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opt{border:2px solid var(--ink);background:#fff;color:var(--ink);padding:16px;border-radius:16px;font:800 17px "Plus Jakarta Sans";text-align:center}
+.opt:hover{background:var(--y)}
+.opt[disabled]{cursor:default;opacity:.55}
+.opt.right{background:#10B981;border-color:#047857;color:#032A1D;opacity:1}
+.opt.wrong{background:#FECACA;border-color:#B91C1C;opacity:1}
+.fb{margin-top:16px;padding:16px;border-radius:16px;background:#fff;border:2px dashed var(--ink);display:none}
+.fb.show{display:block;animation:up .35s}
+.fb b{display:block;font:800 18px "Plus Jakarta Sans";margin-bottom:4px}
+.fb small{display:block;margin-top:8px;color:#555;font-size:12px}
+.gnav{display:flex;justify-content:space-between;align-items:center;margin-top:16px;font:600 14px Inter}
+.gnav .btn{background:var(--ink);color:#fff;padding:11px 18px}
+.dots{display:flex;gap:6px}.dots i{width:10px;height:10px;border-radius:50%;background:#C9C5B5}.dots i.on{background:var(--ink)}
+.final{text-align:center;padding:10px 0}
+.final .big{font-size:84px;font-weight:800}
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+/* ficha */
+.ficha{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px}
+.ficha h3{font-size:20px;margin-bottom:4px}
+.ficha p{color:var(--muted);font-size:14px;margin-bottom:14px}
+.fields{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+label{display:block;font:600 12px Inter;color:var(--muted);margin-bottom:6px;letter-spacing:.04em}
+input,textarea{width:100%;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:12px;padding:13px 14px;font:16px Inter}
+textarea{min-height:92px;resize:vertical}
+/* tabs & prompts */
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 0 16px;scrollbar-width:none}
+.tab{white-space:nowrap;background:var(--card);border:1px solid var(--line);padding:11px 18px;border-radius:99px;font:700 14px Inter;color:var(--muted)}
+.tab[aria-selected=true]{background:var(--y);color:var(--ink);border-color:var(--y)}
+.rdesc{color:var(--muted);margin-bottom:16px}
+.pr{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;margin-bottom:12px}
+.pr h3{font-size:19px;font-weight:800;margin-bottom:4px}
+.pr .why{color:var(--muted);font-size:14px;margin-bottom:12px}
+.pr pre{white-space:pre-wrap;word-break:break-word;font:14px/1.6 Inter;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px}
+.pr mark{background:rgba(245,183,0,.25);color:var(--y);padding:0 3px;border-radius:4px}
+.copy{background:var(--y);color:var(--ink);border:0;border-radius:12px;padding:12px 18px;font:800 14px Inter}
+.copy.ok{background:var(--g)}
+/* builder */
+.build{display:grid;gap:12px}
+.part{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px}
+.part .k{display:flex;align-items:center;gap:10px;font:800 15px "Plus Jakarta Sans";margin-bottom:8px}
+.part .k i{font-style:normal;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--y);color:var(--ink);font-size:13px}
+.part textarea{min-height:60px}
+.out{background:var(--bg);border:2px solid var(--y);border-radius:18px;padding:16px;white-space:pre-wrap;font-size:15px;min-height:70px;margin:6px 0 12px}
+/* method */
+.steps{counter-reset:s;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.step{counter-increment:s;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px}
+.step:before{content:counter(s);display:block;font:800 64px/1 "Plus Jakarta Sans";color:transparent;-webkit-text-stroke:2px var(--y);margin-bottom:8px}
+.step h3{font-size:20px;font-weight:800;margin-bottom:4px}.step p{color:var(--muted);font-size:14px}
+.bigq{margin-top:16px;background:var(--y);color:var(--ink);border-radius:20px;padding:20px;font:800 clamp(18px,4.4vw,24px)/1.25 "Plus Jakarta Sans"}
+/* semaforo */
+.sem{display:grid;gap:12px}
+.lane{border-radius:20px;padding:18px 20px;border:1px solid var(--line);background:var(--card);border-left:8px solid}
+.lane.g{border-left-color:var(--g)}.lane.a{border-left-color:var(--y)}.lane.r{border-left-color:var(--r)}
+.lane h3{font-size:18px;margin-bottom:6px}.lane ul{padding-left:18px;color:var(--muted);font-size:15px}
+/* checklist */
+.chk label{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin-bottom:8px;color:var(--text);font:500 15px Inter;letter-spacing:0;cursor:pointer}
+.chk input{width:22px;height:22px;flex:none;accent-color:var(--y);margin-top:2px}
+.prog{height:10px;background:var(--card);border-radius:99px;overflow:hidden;margin:6px 0 16px;border:1px solid var(--line)}
+.prog i{display:block;height:100%;width:0;background:var(--y);transition:width .3s}
+.prog+p{font-size:14px;color:var(--muted);margin-bottom:12px}
+/* links */
+.links a{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;text-decoration:none;margin-bottom:8px;font-weight:600}
+.links a small{color:var(--muted);font-weight:400;display:block}
+.links a:after{content:"↗";color:var(--y);font-size:20px}
+footer{margin-top:72px;border-top:1px solid var(--line);padding:36px 0 60px;color:var(--muted);font-size:13px}
+footer h4{color:var(--text);font:800 15px "Plus Jakarta Sans";margin-bottom:10px}
+footer li{margin-bottom:6px}footer a{color:var(--y)}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(30px);background:var(--g);color:#04210f;font:700 14px Inter;padding:11px 18px;border-radius:99px;opacity:0;transition:.25s;pointer-events:none;z-index:50}
+.toast.show{opacity:1;transform:translateX(-50%)}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.ticker div{animation:none}.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+/* ===== Degradados y marcas de agua ===== */
+body{background:radial-gradient(900px 640px at 100% 0,rgba(31,163,138,.20),transparent 62%),radial-gradient(800px 600px at 0 38%,rgba(245,183,0,.07),transparent 62%),linear-gradient(180deg,#12203A 0%,#0F1B33 55%,#12203A 100%);background-repeat:no-repeat}
+.wrap{position:relative;z-index:1}
+section,.hero{position:relative;overflow-x:clip}
+.wm{position:absolute;z-index:0;pointer-events:none;fill:none;stroke:#F5B700;stroke-width:.45;stroke-linecap:round;stroke-linejoin:round;opacity:.09}
+.btn:not(.ghost),.tag,.copy,.av,.step+x{background:linear-gradient(135deg,#FFE066,#F5B700)}
+.copy.ok{background:linear-gradient(135deg,#3FD9B7,#1FA38A)}
+.stat.hot{background:linear-gradient(135deg,#FFE066 0%,#F5B700 55%,#F29A00 100%)}
+.stat:not(.hot) .big,.mini b{background:linear-gradient(135deg,#FFE9A0,#F5B700 58%,#E89B00);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.stat,.mini,.part,.pr,.lane,.step,.ficha{background-image:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,0) 55%)}
+.bigq{background:linear-gradient(135deg,#FFE066,#F5B700 60%,#F29A00)}
+.tab[aria-selected=true]{background:linear-gradient(135deg,#FFE066,#F5B700);border-color:#F5B700}
+.prog i{background:linear-gradient(90deg,#FFE066,#F5B700)}
+.game{background:linear-gradient(160deg,#FBF8F0,#F6F1E7 60%,#EEE5D2)}
+.opt.right{background:linear-gradient(135deg,#3FD9B7,#1FA38A);border-color:#0E7C6A;color:#06241E}
+.opt.wrong{background:linear-gradient(135deg,#FFB4A5,#F26B5B);border-color:#B3392B}
+.lane.g{border-left-color:#1FA38A}.lane.r{border-left-color:#F26B5B}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="hero"><svg class="wm" viewBox="0 0 24 24" aria-hidden="true" style="right:-70px;bottom:-60px;width:420px;height:420px"><circle cx="5" cy="6" r="1.8"/><circle cx="5" cy="12" r="1.8"/><circle cx="5" cy="18" r="1.8"/><circle cx="12" cy="9" r="1.8"/><circle cx="12" cy="15" r="1.8"/><circle cx="19" cy="12" r="1.8"/><path d="M6.7 6.6l3.6 2M6.7 11.4l3.6-1.8M6.7 12.6l3.6 1.8M6.7 17.4l3.6-1.8M6.8 6.5l3.5 8M6.8 17.5l3.5-8M13.7 9.6l3.6 1.8M13.7 14.4l3.6-1.8"/></svg><svg class="wm" viewBox="0 0 24 24" aria-hidden="true" style="right:200px;top:20px;width:150px;height:150px"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg><div class="wrap">
+  <span class="tag">Charla · Cámara de Comercio de Montería · 18 nov 2026</span>
+  <h1>La IA no piensa por ti.<br><em>Te ayuda a pensar mejor.</em></h1>
+  <p class="sub">Datos que sorprenden, dos juegos de 2 minutos y 22 prompts listos para copiar. Úsalos hoy mismo.</p>
+  <a class="btn" href="#datos">Empezar con los datos ↓</a>
+  <div class="by"><div class="av">R</div><div><b>Roswil Nieves Laza</b><br>Estudiante de maestría · Docente · Coordinador TIC · Fundador de IDSoft</div></div>
+</div></header>
+
+<div class="ticker" aria-hidden="true"><div>
+  <b>83%</b>no pudo citar su propio ensayo <b>+48% / −17%</b>practicaron mejor con IA, rindieron peor sin ella <b>6 semanas</b>al año ahorran los docentes que la usan cada semana <b>56%</b>de los jóvenes colombianos de 15 años usa IA cada semana <b>47%</b>de los chats de estudiantes piden la respuesta directa
+  <b>83%</b>no pudo citar su propio ensayo <b>+48% / −17%</b>practicaron mejor con IA, rindieron peor sin ella <b>6 semanas</b>al año ahorran los docentes que la usan cada semana <b>56%</b>de los jóvenes colombianos de 15 años usa IA cada semana <b>47%</b>de los chats de estudiantes piden la respuesta directa
+</div></div>
+
+<nav class="nav" aria-label="Secciones"><div class="wrap">
+  <a href="#datos">Datos</a><a href="#juego1">Mito o realidad</a><a href="#juego2">Atajo o andamio</a><a href="#prompts">Prompts</a><a href="#constructor">Constructor</a><a href="#metodo">Método</a><a href="#semaforo">Semáforo</a><a href="#reto">Reto</a><a href="#recursos">Recursos</a>
+</div></nav>
+
+<main>
+<section id="datos"><svg class="wm" viewBox="0 0 24 24" aria-hidden="true" style="right:-50px;top:30px;width:260px;height:260px"><rect x="7" y="7" width="10" height="10" rx="1.5"/><rect x="10" y="10" width="4" height="4" rx=".5"/><path d="M9.5 3v4M14.5 3v4M9.5 17v4M14.5 17v4M3 9.5h4M3 14.5h4M17 9.5h4M17 14.5h4"/></svg><div class="wrap">
+  <div class="eyebrow">Lo que dicen los estudios</div>
+  <h2>Datos que <span class="y">cambian</span> cómo la miras</h2>
+  <p class="lead">Cada cifra viene de una fuente que puedes consultar al final de la página.</p>
+
+  <div class="stat hot rv">
+    <span class="big" data-count="17" data-pre="−" data-suf="%">17%</span>
+    <h3>La trampa: practicaron mejor y aprendieron menos</h3>
+    <p>Casi mil estudiantes de secundaria practicaron matemáticas con un chat tipo ChatGPT. Mientras lo tenían, rindieron mucho mejor. Cuando se lo quitaron, sacaron peor nota que quienes nunca lo usaron. Y no se dieron cuenta.</p>
+    <div class="pair"><div><b class="pos">+48%</b><span>mejor en la práctica, con la IA</span></div><div><b class="neg">−17%</b><span>peor en el examen, sin la IA</span></div></div>
+    <p>Con una versión diseñada como tutor (daba pistas, no respuestas), el daño casi desapareció.</p>
+    <small>Fuente: Bastani et al., PNAS (2025), experimento de campo con ~1.000 estudiantes.</small>
+  </div>
+
+  <div class="stat rv">
+    <span class="big" data-count="83" data-suf="%">83%</span>
+    <h3>No pudieron citar lo que acababan de «escribir»</h3>
+    <p>En un estudio del MIT, la mayoría de quienes escribieron un ensayo con ChatGPT no logró citar ni una frase de su propio texto minutos después. Midieron además la actividad cerebral de 54 personas durante cuatro meses.</p>
+    <small>Fuente: MIT Media Lab, «Your Brain on ChatGPT» (Kosmyna et al.). Muestra pequeña y aún en revisión: es una señal, no una sentencia.</small>
+  </div>
+
+  <div class="stat rv">
+    <span class="big" data-count="6" data-suf=" sem">6 sem</span>
+    <h3>Seis semanas de trabajo al año, devueltas al docente</h3>
+    <p>Los docentes que usan IA cada semana estiman ahorrar 5,9 horas semanales. En un año escolar, es el equivalente a unas seis semanas. Lo más ahorrado: hacer talleres y actividades (84%) y evaluaciones (83%).</p>
+    <small>Fuente: Gallup y Walton Family Foundation (2025), 2.232 docentes de EE. UU. Es tiempo autoinformado.</small>
+  </div>
+
+  <div class="stat rv">
+    <span class="big" data-count="47" data-suf="%">47%</span>
+    <h3>Casi la mitad de los chats de estudiantes piden «hazlo tú»</h3>
+    <p>Anthropic analizó 574.740 conversaciones universitarias. Cerca de 47% eran directas: buscaban la respuesta con poca interacción. Curiosidad: Informática es solo 5,4% de los títulos, pero 38,6% de las conversaciones.</p>
+    <small>Fuente: Anthropic Education Report (abril 2025), conversaciones en Claude.ai.</small>
+  </div>
+
+  <div class="stat rv">
+    <span class="big" style="font-size:clamp(56px,17vw,120px)" data-count="45" data-suf="%">40–47%</span>
+    <h3>Les dieron la herramienta… y casi la mitad nunca la abrió</h3>
+    <p>En dos ensayos aleatorios sobre tutores de IA, entre 40% y 47% de los estudiantes jamás usó la plataforma. Los que sí, la usaron en promedio entre 2 y 5 minutos por semana. Tener la herramienta no es lo mismo que usarla bien.</p>
+    <small>Fuente: Stanford SCALE Initiative (2026), revisión de ensayos aleatorios.</small>
+  </div>
+
+  <div class="grid g2" style="margin-top:6px">
+    <div class="mini rv"><b>56%</b><p>de los colombianos de 15 años usó IA cada semana: la cifra más alta de la región.</p><small>PISA 2025 (OCDE), vía Infobae, 20 sept. 2026.</small></div>
+    <div class="mini rv"><b>53% vs 36%</b><p>de los docentes en Colombia usó IA en su enseñanza, frente al promedio OCDE.</p><small>TALIS 2024, nota del Icfes.</small></div>
+    <div class="mini rv"><b>92%</b><p>de los universitarios latinoamericanos ya la usa; entre los profesores, 79%.</p><small>Digital Education Council, LATAM Survey 2026.</small></div>
+    <div class="mini rv"><b>30%</b><p>de estudiantes y profesores siente que su institución la integra bien.</p><small>Digital Education Council, LATAM Survey 2026.</small></div>
+    <div class="mini rv"><b>194</b><p>estudiantes de física en Harvard: un tutor de IA bien diseñado les enseñó más, en menos tiempo, que una clase activa.</p><small>Kestin et al., Scientific Reports (2025). Un curso, una universidad.</small></div>
+    <div class="mini rv"><b>+3 pts</b><p>más en matemáticas con tutor de IA que además los obligaba a repetir la habilidad correcta 3 veces. Frenar ayudó.</p><small>Estudio con +6.000 estudiantes de Tennessee (NBER, 2026), aún sin revisión por pares.</small></div>
+  </div>
+</div></section>
+
+<section id="juego1"><svg class="wm" viewBox="0 0 24 24" aria-hidden="true" style="right:-40px;top:40px;width:260px;height:260px"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V16h5v-.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/></svg><div class="wrap">
+  <div class="eyebrow">Juego 1 · 2 minutos</div>
+  <h2>¿Mito o realidad?</h2>
+  <p class="lead">Decide primero, luego mira el dato.</p>
+  <div class="game" id="g1" aria-live="polite"></div>
+</div></section>
+
+<section id="juego2"><svg class="wm" viewBox="0 0 24 24" aria-hidden="true" style="right:-30px;top:40px;width:260px;height:260px"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg><div class="wrap">
+  <div class="eyebrow">Juego 2 · 1 minuto</div>
+  <h2>¿Atajo o andamio?</h2>
+  <p class="lead">Un atajo te entrega la respuesta. Un andamio te sostiene mientras piensas tú.</p>
+  <div class="game" id="g2" aria-live="polite"></div>
+</div></section>
+
+<section id="prompts"><svg class="wm" viewBox="0 0 24 24" aria-hidden="true" style="right:-40px;top:40px;width:260px;height:260px"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg><div class="wrap">
+  <div class="eyebrow">Para copiar y pegar</div>
+  <h2>22 prompts por rol</h2>
+  <p class="lead">Llena tu ficha una vez y todos los prompts se adaptan a ti. Se guarda solo en tu teléfono.</p>
+  <div class="ficha">
+    <h3>Tu ficha</h3><p>Escribe lo que quieras; si lo dejas vacío, verás [corchetes] para completar.</p>
+    <div class="fields">
+      <div><label for="f-contexto">TU CARRERA O ÁREA</label><input id="f-contexto" data-k="contexto" placeholder="Ej.: Administración de empresas"></div>
+      <div><label for="f-materia">MATERIA O PROYECTO</label><input id="f-materia" data-k="materia" placeholder="Ej.: Contabilidad financiera"></div>
+      <div><label for="f-tema">TEMA</label><input id="f-tema" data-k="tema" placeholder="Ej.: Balance general"></div>
+    </div>
+  </div>
+  <div class="tabs" role="tablist" id="tabs" style="margin-top:20px"></div>
+  <p class="rdesc" id="rdesc"></p>
+  <div id="plist"></div>
+</div></section>
+
+<section id="constructor"><svg class="wm" viewBox="0 0 24 24" aria-hidden="true" style="right:-30px;top:40px;width:260px;height:260px"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg><div class="wrap">
+  <div class="eyebrow">Hazlo tú</div>
+  <h2>Constructor de prompts</h2>
+  <p class="lead">Un buen pedido tiene cinco ingredientes. Complétalos y copia.</p>
+  <div class="build">
+    <div class="part"><div class="k"><i>1</i>Rol</div><textarea data-b="rol" placeholder="Actúa como un tutor de…"></textarea></div>
+    <div class="part"><div class="k"><i>2</i>Contexto</div><textarea data-b="ctx" placeholder="Soy estudiante de… y estoy estudiando…"></textarea></div>
+    <div class="part"><div class="k"><i>3</i>Tarea</div><textarea data-b="tarea" placeholder="Hazme preguntas sobre…"></textarea></div>
+    <div class="part"><div class="k"><i>4</i>Reglas</div><textarea data-b="reglas" placeholder="No me des la respuesta directa; si no sabes, dilo."></textarea></div>
+    <div class="part"><div class="k"><i>5</i>Formato</div><textarea data-b="fmt" placeholder="Una pregunta a la vez / una tabla / máximo 5 líneas."></textarea></div>
+    <div class="out" id="bout" aria-live="polite"></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="copy" id="bcopy">Copiar prompt</button><button class="btn ghost" id="bex" type="button">Cargar ejemplo</button></div>
+  </div>
+</div></section>
+
+<section id="metodo"><svg class="wm" viewBox="0 0 24 24" aria-hidden="true" style="right:-40px;top:40px;width:260px;height:260px"><circle cx="5" cy="6" r="1.8"/><circle cx="5" cy="12" r="1.8"/><circle cx="5" cy="18" r="1.8"/><circle cx="12" cy="9" r="1.8"/><circle cx="12" cy="15" r="1.8"/><circle cx="19" cy="12" r="1.8"/><path d="M6.7 6.6l3.6 2M6.7 11.4l3.6-1.8M6.7 12.6l3.6 1.8M6.7 17.4l3.6-1.8M6.8 6.5l3.5 8M6.8 17.5l3.5-8M13.7 9.6l3.6 1.8M13.7 14.4l3.6-1.8"/></svg><div class="wrap">
+  <div class="eyebrow">El método</div>
+  <h2>Intenta · Pregunta · Contrasta · Explica</h2>
+  <div class="steps" style="margin-top:20px">
+    <div class="step"><h3>Intenta</h3><p>Haz tú un primer borrador o un primer intento.</p></div>
+    <div class="step"><h3>Pregunta</h3><p>Pídele pistas, preguntas y retroalimentación, no la solución.</p></div>
+    <div class="step"><h3>Contrasta</h3><p>Verifica cifras, citas y datos en fuentes confiables.</p></div>
+    <div class="step"><h3>Explica</h3><p>Cierra el chat y explícalo con tus palabras.</p></div>
+  </div>
+  <div class="bigq">Prueba final: cierra el chat y resuelve un problema parecido. Si puedes, aprendiste.</div>
+</div></section>
+
+<section id="semaforo"><svg class="wm" viewBox="0 0 24 24" aria-hidden="true" style="right:-30px;top:40px;width:260px;height:260px"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg><div class="wrap">
+  <div class="eyebrow">Reglas rápidas</div>
+  <h2>El semáforo de la IA</h2>
+  <div class="sem" style="margin-top:18px">
+    <div class="lane g"><h3>Verde · Úsala para</h3><ul><li>Entender un tema con otro ejemplo</li><li>Practicar con preguntas y exámenes de prueba</li><li>Organizar ideas, tiempo y borradores propios</li></ul></div>
+    <div class="lane a"><h3>Amarillo · Con cuidado</h3><ul><li>Resúmenes y datos: verifica antes de usarlos</li><li>Citas y cifras: contrasta con la fuente original</li><li>Información personal o de clientes: no la pegues</li></ul></div>
+    <div class="lane r"><h3>Rojo · Evítalo</h3><ul><li>Entregar su texto como tuyo sin declararlo</li><li>Decidir con su respuesta sin revisarla</li><li>Reemplazar tu estudio o tu criterio</li></ul></div>
+  </div>
+</div></section>
+
+<section id="reto"><svg class="wm" viewBox="0 0 24 24" aria-hidden="true" style="right:-40px;top:40px;width:260px;height:260px"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11.5v4.5c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/><path d="M22 9v6"/></svg><div class="wrap">
+  <div class="eyebrow">Tu reto de hoy</div>
+  <h2>Cinco minutos para empezar</h2>
+  <p class="lead">Marca cada paso cuando lo hagas.</p>
+  <div class="prog"><i id="pbar"></i></div><p id="ptxt">0 de 6</p>
+  <div class="chk" id="chk"></div>
+</div></section>
+
+<section id="recursos"><div class="wrap">
+  <div class="eyebrow">Para seguir</div>
+  <h2>Herramientas y guías</h2>
+  <div class="links" style="margin-top:18px">
+    <a href="https://claude.ai" target="_blank" rel="noopener"><span>Claude<small>Asistente de IA de Anthropic</small></span></a>
+    <a href="https://chatgpt.com" target="_blank" rel="noopener"><span>ChatGPT<small>Asistente de OpenAI</small></span></a>
+    <a href="https://gemini.google.com" target="_blank" rel="noopener"><span>Gemini<small>Asistente de Google</small></span></a>
+    <a href="https://notebooklm.google.com" target="_blank" rel="noopener"><span>NotebookLM<small>Estudia solo con tus propios documentos</small></span></a>
+    <a href="https://www.perplexity.ai" target="_blank" rel="noopener"><span>Perplexity<small>Búsqueda con fuentes citadas</small></span></a>
+    <a href="https://unesdoc.unesco.org/ark:/48223/pf0000393812" target="_blank" rel="noopener"><span>UNESCO · Competencias en IA para estudiantes<small>Marco de referencia</small></span></a>
+    <a href="https://unesdoc.unesco.org/ark:/48223/pf0000393813" target="_blank" rel="noopener"><span>UNESCO · Competencias en IA para docentes<small>Marco de referencia</small></span></a>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <h4>Fuentes de los datos</h4>
+  <ul>
+    <li>Bastani et al., «Generative AI without guardrails can harm learning», PNAS (2025). <a href="https://www.pnas.org/doi/10.1073/pnas.2422633122" target="_blank" rel="noopener">pnas.org</a></li>
+    <li>Kosmyna et al., «Your Brain on ChatGPT», MIT Media Lab. <a href="https://www.media.mit.edu/projects/your-brain-on-chatgpt/overview/" target="_blank" rel="noopener">media.mit.edu</a></li>
+    <li>Gallup y Walton Family Foundation, «Teaching for Tomorrow» (2025). <a href="https://news.gallup.com/poll/691967/three-teachers-weekly-saving-six-weeks-year.aspx" target="_blank" rel="noopener">gallup.com</a></li>
+    <li>Anthropic, «How University Students Use Claude» (2025). <a href="https://www.anthropic.com/research/anthropic-education-report-how-university-students-use-claude" target="_blank" rel="noopener">anthropic.com</a></li>
+    <li>Stanford SCALE Initiative, noticias (2026). <a href="https://scale.stanford.edu/news" target="_blank" rel="noopener">scale.stanford.edu</a></li>
+    <li>Kestin et al., Scientific Reports (2025). <a href="https://www.nature.com/articles/s41598-025-97652-6" target="_blank" rel="noopener">nature.com</a></li>
+    <li>The Hechinger Report, estudio de Tennessee (agosto 2026). <a href="https://hechingerreport.org/proof-points-ai-mastery-learning/" target="_blank" rel="noopener">hechingerreport.org</a></li>
+    <li>Icfes, TALIS 2024; Infobae (20 sept. 2026) sobre PISA 2025; Digital Education Council, LATAM Survey 2026.</li>
+  </ul>
+  <p style="margin-top:18px">Por Roswil Nieves Laza · IDSoft. Hecho para la charla «La IA como herramienta de aprendizaje», Cámara de Comercio de Montería.</p>
+</div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite">Copiado ✓</div>
+
+<script>
+(function(){
+var $=function(s,c){return (c||document).querySelector(s)},$$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+function esc(t){return t.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
+function toast(m){var t=$("#toast");t.textContent=m||"Copiado ✓";t.classList.add("show");setTimeout(function(){t.classList.remove("show")},1600)}
+function copyText(text,btn){
+  function done(){if(btn){var o=btn.textContent;btn.textContent="Copiado ✓";btn.classList.add("ok");setTimeout(function(){btn.textContent=o;btn.classList.remove("ok")},1500)}toast()}
+  function fb(){var ta=document.createElement("textarea");ta.value=text;ta.setAttribute("readonly","");ta.style.cssText="position:fixed;opacity:0;top:0";document.body.appendChild(ta);ta.select();var ok=false;try{ok=document.execCommand("copy")}catch(e){}document.body.removeChild(ta);if(ok)done();else toast("Mantén presionado el texto para copiarlo")}
+  try{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,fb);return}}catch(e){}fb();
+}
+function store(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
+
+/* progress bar */
+window.addEventListener("scroll",function(){var h=document.documentElement;var p=h.scrollTop/(h.scrollHeight-h.clientHeight);$("#bar").style.width=(p*100)+"%"},{passive:true});
+
+/* reveal + counters */
+var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+function count(el){
+  var n=+el.getAttribute("data-count"),pre=el.getAttribute("data-pre")||"",suf=el.getAttribute("data-suf")||"",final=el.textContent;
+  if(reduce||isNaN(n)||/–/.test(final)){return}
+  var t0=null;function f(t){if(!t0)t0=t;var p=Math.min((t-t0)/900,1),v=Math.round(n*(1-Math.pow(1-p,3)));el.textContent=pre+v+suf;if(p<1)requestAnimationFrame(f);else el.textContent=final}
+  requestAnimationFrame(f);
+}
+if("IntersectionObserver" in window){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");var b=$(".big",e.target);if(b)count(b);io.unobserve(e.target)}})},{threshold:.15});
+  $$(".rv").forEach(function(el){io.observe(el)});
+}else{$$(".rv").forEach(function(el){el.classList.add("in")})}
+
+/* generic game */
+function game(root,rounds,labels,verdict){
+  var i=0,score=0,el=$(root);
+  function show(){
+    if(i>=rounds.length){
+      var s=verdict(score,rounds.length);
+      el.innerHTML='<div class="final"><div class="eyebrow" style="justify-content:center">Resultado</div><div class="big">'+score+'/'+rounds.length+'</div><h3>'+s[0]+'</h3><p>'+s[1]+'</p><div class="gnav" style="justify-content:center"><button class="btn" id="again" type="button">Jugar otra vez</button></div></div>';
+      $("#again",el).onclick=function(){i=0;score=0;show()};return;
+    }
+    var r=rounds[i],dots="";for(var d=0;d<rounds.length;d++)dots+='<i class="'+(d<=i?"on":"")+'"></i>';
+    el.innerHTML='<div class="eyebrow">Pregunta '+(i+1)+' de '+rounds.length+'</div><h3>'+r.q+'</h3><div class="opts"><button class="opt" data-a="0" type="button">'+labels[0]+'</button><button class="opt" data-a="1" type="button">'+labels[1]+'</button></div><div class="fb" id="fb"></div><div class="gnav"><div class="dots">'+dots+'</div><button class="btn" id="nx" type="button" style="display:none">'+(i<rounds.length-1?"Siguiente":"Ver resultado")+'</button></div>';
+    $$(".opt",el).forEach(function(b){b.onclick=function(){
+      var a=+b.getAttribute("data-a"),ok=a===r.a;if(ok)score++;
+      $$(".opt",el).forEach(function(x){x.disabled=true;if(+x.getAttribute("data-a")===r.a)x.classList.add("right")});
+      if(!ok)b.classList.add("wrong");
+      var fb=$("#fb",el);fb.innerHTML='<b>'+(ok?"¡Correcto!":"Ojo: no era así")+'</b>'+r.e+'<small>'+r.s+'</small>';fb.classList.add("show");
+      var nx=$("#nx",el);nx.style.display="";nx.focus();nx.onclick=function(){i++;show()};
+    }});
+    if(i>0)el.scrollIntoView({block:"nearest",behavior:"smooth"});
+  }
+  show();window.__g1scroll=true;
+}
+game("#g1",[
+ {q:"«Si la IA te da la respuesta correcta, aprendes lo mismo.»",a:0,e:"Con un chat normal, los estudiantes practicaron 48% mejor… y sacaron 17% menos en el examen sin IA. Además, no sintieron que aprendieron menos.",s:"Bastani et al., PNAS (2025)."},
+ {q:"«Los jóvenes colombianos casi no usan IA.»",a:0,e:"56% de los estudiantes colombianos de 15 años la usó cada semana, la cifra más alta de la región.",s:"PISA 2025 (OCDE), vía Infobae."},
+ {q:"«Un tutor de IA bien diseñado puede enseñar más que una clase activa.»",a:1,e:"En un curso de física de Harvard (194 estudiantes), el tutor superó a la clase activa. Eso sí: era un tutor diseñado para enseñar, no un chat cualquiera.",s:"Kestin et al., Scientific Reports (2025)."},
+ {q:"«Si la institución les da una herramienta de IA, los estudiantes la usan.»",a:0,e:"En dos ensayos aleatorios, entre 40% y 47% nunca la abrió. Los que sí, la usaron 2 a 5 minutos por semana.",s:"Stanford SCALE Initiative (2026)."},
+ {q:"«Los docentes que usan IA cada semana ahorran el equivalente a seis semanas al año.»",a:1,e:"Estiman ahorrar 5,9 horas por semana, unas seis semanas por año escolar. Es tiempo autoinformado, en EE. UU.",s:"Gallup y Walton Family Foundation (2025)."},
+ {q:"«Casi la mitad de las conversaciones de los estudiantes con una IA piden la respuesta directa.»",a:1,e:"Cerca de 47% eran conversaciones directas, con poca interacción. Por eso importa cómo pides.",s:"Anthropic Education Report (2025), 574.740 conversaciones."}
+],["Mito","Realidad"],function(s,n){
+  if(s>=n-1)return["Ya piensas como un buen usuario","Dudas de las frases bonitas y miras el dato. Esa es la habilidad que más importa."];
+  if(s>=3)return["Vas por buen camino","Varios datos te sorprendieron. Revisa la sección de datos y vuelve a intentarlo."];
+  return["La IA te sorprendió, y eso es bueno","Lo intuitivo no siempre es lo cierto. Por eso conviene contrastar siempre."];
+});
+game("#g2",[
+ {q:"«Resúmeme el capítulo 3 para mañana.»",a:0,e:"Te entrega un resumen que no hiciste tú. Para convertirlo en andamio: lee primero, resume tú y pídele que revise tu resumen.",s:""},
+ {q:"«Hazme 5 preguntas sobre el capítulo 3 y no me des las respuestas hasta que conteste.»",a:1,e:"Tú haces el esfuerzo de recordar y la IA te sostiene con práctica y retroalimentación.",s:""},
+ {q:"«Escribe mi ensayo sobre la inflación en 800 palabras.»",a:0,e:"Es la situación del estudio del MIT: no puedes explicar lo que «escribiste». Pídele más bien que critique tu borrador.",s:""},
+ {q:"«Este es MI borrador. No lo reescribas; dime 3 debilidades y qué datos debo verificar.»",a:1,e:"El texto sigue siendo tuyo y la IA hace de revisor.",s:""},
+ {q:"«Resuelve este ejercicio y dame solo el resultado.»",a:0,e:"Sin pasos ni esfuerzo, no hay aprendizaje. Mejor: «dame una pista para el primer paso».",s:""},
+ {q:"«Explícame el tema con otro ejemplo y luego evalúa si entendí.»",a:1,e:"Cambia el ángulo cuando el libro no te llega y comprueba tu comprensión.",s:""}
+],["Atajo","Andamio"],function(s,n){
+  if(s>=n-1)return["Ojo de andamiero","Distingues cuándo la IA piensa por ti y cuándo te hace pensar."];
+  return["Practica la diferencia","La clave es quién hace el esfuerzo de pensar. Si lo haces tú, es andamio."];
+});
+
+/* prompts */
+var ROLES={
+ estudiante:{desc:"Para aprender de verdad: la IA como tutor que pregunta, no como máquina de respuestas.",items:[
+  ["Tutor socrático","Actúa como un tutor socrático de {materia} para estudiantes de {contexto}. Quiero estudiar {tema}. NO me des la respuesta: hazme una pregunta a la vez, empezando por lo básico, y ajusta la dificultad según lo que conteste. Al final dime qué debo reforzar.","Te obliga a pensar: la IA pregunta y tú construyes la respuesta."],
+  ["Explícamelo en 3 niveles","Explícame {tema} (materia: {materia}) en tres niveles: 1) como a un niño de 10 años, 2) como a un estudiante de primer semestre y 3) con un ejemplo real de {contexto}. Después hazme 3 preguntas para comprobar si entendí.","Cuando la explicación del libro no te llega, cambia el ángulo."],
+  ["Revisa mi borrador (yo escribo primero)","Este es MI borrador sobre {tema}: [pega aquí tu texto]. No lo reescribas. Dime 3 fortalezas, 3 debilidades, qué argumento falta y qué datos debo verificar. Si algo no se entiende, pregúntame antes de opinar.","El trabajo sigue siendo tuyo; la IA hace de revisor."],
+  ["Plan de estudio","Tengo [X] horas a la semana y un examen de {materia} el [fecha]. Arma un plan de estudio día por día sobre {tema}, con repaso espaciado y pausas. Entrégamelo en una tabla.","Organizar el tiempo es una de las ayudas más seguras."],
+  ["Examen sorpresa (cierra el chat)","Hazme un examen de 5 preguntas sobre {tema}. No muestres las respuestas hasta que yo conteste todas. Luego califícame con retroalimentación y dime qué repasar.","Practicar recordando es lo que fija el aprendizaje."],
+  ["Contrasta antes de citar","Dame 3 enfoques distintos sobre {tema}. Para cada uno dime qué debo verificar en fuentes académicas (SciELO, Google Académico). No inventes citas ni autores: si no estás seguro, dilo.","La IA puede inventar referencias: esta instrucción reduce el riesgo, pero igual verifica."]]},
+ docente:{desc:"Para ahorrar tiempo en lo repetitivo y dedicarlo a lo que solo un docente hace: acompañar y evaluar con criterio.",items:[
+  ["Planeador de clase","Actúa como diseñador instruccional. Curso: {materia}, para estudiantes de {contexto}. Diseña un planeador de clase de [duración] sobre {tema} con: objetivo, competencia, resultado de aprendizaje, actividad principal, medios y evidencia de aprendizaje. Formato: tabla.","Te da un primer borrador; el criterio pedagógico es tuyo."],
+  ["Estudio de caso con contexto cotidiano","Crea un estudio de caso corto y con contexto cotidiano para estudiantes de {contexto}, con poco texto, para practicar {tema} en {materia}. Dame por separado la solución para el docente.","Casos cercanos a la vida del estudiante enganchan más."],
+  ["Misma actividad, tres niveles","Adapta esta actividad sobre {tema} en tres niveles de dificultad (básico, intermedio y avanzado) para estudiantes de {contexto}. Mantén el mismo objetivo de aprendizaje: [pega la actividad].","Útil cuando tienes grupos de distintos programas o niveles."],
+  ["Evaluación que mide el proceso","Convierte este trabajo final de {materia} en una evaluación que mida el proceso y no solo el producto: entregas parciales, sustentación oral de 5 minutos, reflexión sobre decisiones y una pregunta nueva que el estudiante deba resolver en clase.","Los trabajos para la casa ya no prueban por sí solos qué aprendió el estudiante."],
+  ["Rúbrica","Crea una rúbrica de 4 criterios y 4 niveles para evaluar [el producto] sobre {tema}. Incluye descriptores observables y un puntaje por nivel. Formato: tabla.","Revisa que los descriptores sean medibles antes de usarla."],
+  ["Retroalimentación amable","Con esta rúbrica: [pega la rúbrica] y este trabajo (sin nombres ni datos personales): [pega el texto], redacta una retroalimentación amable de máximo 5 líneas: una fortaleza, un aspecto a mejorar y un siguiente paso.","Nunca pegues datos personales del estudiante."]]},
+ emprendedor:{desc:"Para pasar de la idea a algo que funciona: más rápido, pero validando con personas reales.",items:[
+  ["Historias de usuario","Actúa como analista de producto. Mi idea de software para {contexto} resuelve: {tema}. Escribe 8 historias de usuario (\"Como [rol] quiero [acción] para [beneficio]\") priorizadas en una tabla: imprescindible, importante y opcional.","Convierte una idea vaga en tareas concretas."],
+  ["Explícame este código","Explícame, línea por línea y en lenguaje sencillo, qué hace este código: [pega el código]. Señala posibles errores o riesgos de seguridad y sugiere una versión más clara.","Aprendes mientras avanzas; revisa y prueba todo lo que te devuelva."],
+  ["Casos de prueba","Para esta función o pantalla de {materia}: [descripción], genera una lista de casos de prueba: caso normal, casos límite y casos de error, con el resultado esperado en cada uno.","Probar bien es tan importante como programar."],
+  ["Manual de usuario","Redacta un manual de usuario de una página, en lenguaje simple, para {tema}, dirigido a personas de {contexto} que no son técnicas. Incluye pasos numerados y 3 errores comunes.","Documentar deja de ser lo que siempre se deja para después."],
+  ["Abogado del diablo","Actúa como abogado del diablo: dame las 5 razones más probables por las que mi solución para {tema} podría fracasar con {contexto}, y una forma barata de comprobar cada una.","La IA propone hipótesis; la validación real es hablar con clientes."]]},
+ coordinador:{desc:"Para coordinar equipos y plataformas: convertir necesidades en requerimientos y procesos que se puedan ejecutar.",items:[
+  ["Necesidad → requerimientos","Soy coordinador de TIC. Esta es una necesidad de {contexto}: {tema}. Conviértela en requerimientos funcionales y no funcionales, con criterios de aceptación y riesgos. Formato: tabla. Al final, hazme las preguntas que te falten.","Ordena el pedido antes de que llegue al equipo de desarrollo."],
+  ["Instrucciones para un asistente virtual","Diseña las instrucciones de un asistente virtual que responda preguntas de {contexto} usando SOLO el documento que le daré como base. Define: tono, qué hacer cuando no sabe la respuesta, a quién escalar y 10 preguntas de prueba.","Un buen agente depende más de sus reglas y su documento base que de la herramienta."],
+  ["Lineamientos de uso de IA","Redacta un borrador de lineamientos de uso responsable de IA para {contexto}, con: principios, usos permitidos, usos no permitidos, transparencia (cómo declarar el uso), protección de datos y responsabilidades. Máximo 2 páginas.","Es un borrador: contrástalo con la normativa y las áreas jurídicas de tu institución."],
+  ["Plan de capacitación docente","Diseña un plan de capacitación de 4 sesiones de 90 minutos para docentes de {contexto} sobre {tema}: objetivos, actividad práctica, evidencia y cómo medir si lo aplicaron.","La formación es la mayor brecha: las herramientas ya están."],
+  ["Prototipar antes de programar","Antes de programar, dibuja con texto el flujo de pantallas de {tema}: pantallas, campos, validaciones y qué ve cada rol (estudiante, docente, administrador). Luego lista las preguntas que debo resolver con los usuarios.","Equivocarse en el papel sale mucho más barato que en producción."]]}
+};
+var NAMES={estudiante:"Estudiante",docente:"Docente",emprendedor:"Emprendedor",coordinador:"Coordinador"};
+var FICHA={};try{FICHA=JSON.parse(store("ficha")||"{}")||{}}catch(e){FICHA={}}
+var role="estudiante";
+function fill(t,html){return t.replace(/\{(\w+)\}/g,function(_,k){var v=(FICHA[k]||"").trim();if(!v)v="["+({contexto:"tu carrera o área",materia:"materia o proyecto",tema:"tema"}[k]||k)+"]";return html?"<mark>"+esc(v)+"</mark>":v})}
+function renderTabs(){
+  $("#tabs").innerHTML=Object.keys(ROLES).map(function(k){return '<button class="tab" role="tab" data-r="'+k+'" aria-selected="'+(k===role)+'">'+NAMES[k]+' · '+ROLES[k].items.length+'</button>'}).join("");
+  $$(".tab").forEach(function(b){b.onclick=function(){role=b.getAttribute("data-r");renderTabs();renderList()}});
+}
+function renderList(){
+  var r=ROLES[role];$("#rdesc").textContent=r.desc;
+  $("#plist").innerHTML=r.items.map(function(it,i){return '<div class="pr"><h3>'+esc(it[0])+'</h3><p class="why">'+esc(it[2])+'</p><pre>'+fill(esc(it[1]).replace(/&quot;/g,'"'),true)+'</pre><button class="copy" data-i="'+i+'" type="button">Copiar prompt</button></div>'}).join("");
+  $$(".copy[data-i]").forEach(function(b){b.onclick=function(){copyText(fill(r.items[+b.getAttribute("data-i")][1],false),b)}});
+}
+$$("input[data-k]").forEach(function(inp){inp.value=FICHA[inp.getAttribute("data-k")]||"";inp.addEventListener("input",function(){FICHA[inp.getAttribute("data-k")]=inp.value;store("ficha",JSON.stringify(FICHA));renderList()})});
+renderTabs();renderList();
+
+/* builder */
+var B={rol:"",ctx:"",tarea:"",reglas:"",fmt:""};
+function bupd(){var parts=[];["rol","ctx","tarea","reglas","fmt"].forEach(function(k){if(B[k].trim())parts.push(B[k].trim())});$("#bout").textContent=parts.length?parts.join("\n\n"):"Tu prompt aparecerá aquí a medida que escribas."}
+$$("textarea[data-b]").forEach(function(t){t.addEventListener("input",function(){B[t.getAttribute("data-b")]=t.value;bupd()})});
+$("#bcopy").onclick=function(){var s=$("#bout").textContent;if(/aparecerá aquí/.test(s)){toast("Escribe algo primero");return}copyText(s,$("#bcopy"))};
+$("#bex").onclick=function(){var ex={rol:"Actúa como tutor de contabilidad.",ctx:"Soy estudiante de primer semestre de Contaduría.",tarea:"Hazme preguntas sobre el balance general para ver si lo entiendo.",reglas:"No me des la respuesta directa. Si me equivoco, dame una pista.",fmt:"Una pregunta a la vez."};$$("textarea[data-b]").forEach(function(t){var k=t.getAttribute("data-b");t.value=ex[k];B[k]=ex[k]});bupd()};
+bupd();
+
+/* checklist */
+var ITEMS=["Llené mi ficha con mi carrera, materia y tema","Copié un prompt de mi rol y lo probé","Pedí que me hiciera preguntas en vez de darme la respuesta","Verifiqué una cifra o cita en una fuente original","Cerré el chat y expliqué el tema con mis palabras","Le conté a otra persona un truco que aprendí hoy"];
+var saved={};try{saved=JSON.parse(store("chk")||"{}")||{}}catch(e){}
+$("#chk").innerHTML=ITEMS.map(function(t,i){return '<label><input type="checkbox" data-c="'+i+'"'+(saved[i]?" checked":"")+'><span>'+t+'</span></label>'}).join("");
+function pupd(){var n=$$("#chk input:checked").length;$("#pbar").style.width=(n/ITEMS.length*100)+"%";$("#ptxt").textContent=n+" de "+ITEMS.length+(n===ITEMS.length?" · ¡Reto completado!":"")}
+$$("#chk input").forEach(function(c){c.onchange=function(){saved[c.getAttribute("data-c")]=c.checked;store("chk",JSON.stringify(saved));pupd()}});
+pupd();
+})();
+</script>
+</body>
+</html>
